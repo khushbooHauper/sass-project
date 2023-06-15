@@ -20,8 +20,8 @@ const FlippedModal: React.FC = () => {
     <>
       {!isSignUp ? (
         <div className={`signup-container`}>
-          <div className={`signup ${isSignUp ? "rotate" : ""}`}>
-            <div className="left">
+          <div className={`signup }`}>
+            <div  className={`left ${isSignUp ? "rotate" : ""}`}>
               <h2>Welcome Back</h2>
               <div className="text-span">
                 {" "}
@@ -140,8 +140,8 @@ const FlippedModal: React.FC = () => {
         </div>
       ) : (
         <div className={`signup-container`}>
-          <div className={`signup ${isSignUp ? "rotate" : ""}`}>
-            <div className="left">
+          <div className={`signup `}>
+            <div  className={`left ${isSignUp ? "rotate" : ""}`}>
               <h2 className="register-text">Register Now</h2>
 
               <form className="input-flex">

@@ -50,7 +50,6 @@ body {
 }
 
 .signup-container {
- 
   position: fixed;
   top: 0;
   left: 0;
@@ -62,12 +61,8 @@ body {
   width: 100%;
   height: 100%;
   font-family: "Courier New", Courier, monospace;
-  
 }
 
- 
- 
- 
 .signup {
   display: flex;
   justify-content: space-between;
@@ -146,30 +141,6 @@ body {
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;
 }
-@media (max-width: 560px) {
-  .signup {
-    width: 450px;
-    height: 550px;
-    display: flex;
-    flex-direction: column;
-  }
-  .signup-container {
-    width: 50%;
-    height: 50%;
-  }
-  .email-input {
-    width: 300px;
-  }
-  img {
-    display: none;
-  }
-  .google-text-div {
-    width: 300px;
-  }
-  .signin-btn {
-    width: 300px;
-  }
-}
 
 .input-icons {
   i {
@@ -222,28 +193,120 @@ body {
 .sign-toggle-text {
   cursor: pointer;
 }
-.register-text{
-  margin-bottom: 32px!important;
+.register-text {
+  margin-bottom: 32px !important;
 }
 
-
-.rotate{
-  animation: animName 500ms linear;
+.rotate {
+  animation: animName 300ms linear;
 }
 @keyframes animName {
-  0%{
-     transform: rotateY(0deg);
-     left: 20%;
-     top: 10%;
+  0% {
+    transform: rotateY(0deg);
+    left: 20%;
+    top: 10%;
+  }
+  20% {
+    transform: rotateY(-45deg);
+    left: 20%;
+    top: 10%;
+  }
+  50% {
+    transform: rotateY(-70deg);
+    left: 20%;
+    top: 10%;
+  }
+  100% {
+    transform: rotateY(-110deg);
+    left: 20%;
+    top: 10%;
+  }
+}
+
+// media query starts here
+
+@media (max-width: 1024px){
+  .container {
+    max-width: 1200px;
+  }
+
+  .signup {
+    flex-direction: row;
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    height: auto;
+    img {
+      width: 100%;
     }
-    50%{
-      transform: rotateY(-45deg);
-      left: 20%;
-      top: 10%;
-     } 
- 100%{
-     transform: rotateY(-90deg);
-     left: 20%;
-     top: 10%;
+    .left {
+      width: 100%;
     }
- }
+	.right{
+		display: none;
+	}
+  }
+
+  .input-field {
+    width: 340px;
+  }
+  .signin-btn {
+    width: 340px;
+  }
+  .google-text-div {
+    width: 340px;
+    img {
+      width: 15px;
+      height: 10px;
+    }
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .signup {
+    width: 400px;
+    height: auto;
+    padding: 10px;
+   
+    .left {
+      width: 100%;
+    }
+  }
+  .fa-eye {
+    margin-left: -53px;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+  .google-text-div {
+   
+    // img {
+    //   width: 15px;
+    //   height: 10px;
+    // }
+  }
+}
+
+@media (min-width: 762px) and (max-width: 875px){
+
+  .input-field {
+    width: 300px;
+  }
+  .signin-btn {
+    width: 300px;
+  }
+  .google-text-div {
+    width: 300px;
+    
+  }
+}
+
+
+
+
+// media query ends here
