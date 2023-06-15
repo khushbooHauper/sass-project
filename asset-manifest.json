@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sass-project/static/css/main.27d0e44d.css",
-    "main.js": "/sass-project/static/js/main.668f8c40.js",
+    "main.css": "/sass-project/static/css/main.a0dcb7c7.css",
+    "main.js": "/sass-project/static/js/main.a8106c58.js",
     "Home.js": "/sass-project/static/js/Home.31038af9.chunk.js",
     "Cart.js": "/sass-project/static/js/Cart.ecc73e43.chunk.js",
     "About.js": "/sass-project/static/js/About.7fb19f35.chunk.js",
@@ -22,8 +22,8 @@
     "static/media/slick.ttf": "/sass-project/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/sass-project/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/sass-project/index.html",
-    "main.27d0e44d.css.map": "/sass-project/static/css/main.27d0e44d.css.map",
-    "main.668f8c40.js.map": "/sass-project/static/js/main.668f8c40.js.map",
+    "main.a0dcb7c7.css.map": "/sass-project/static/css/main.a0dcb7c7.css.map",
+    "main.a8106c58.js.map": "/sass-project/static/js/main.a8106c58.js.map",
     "Home.31038af9.chunk.js.map": "/sass-project/static/js/Home.31038af9.chunk.js.map",
     "Cart.ecc73e43.chunk.js.map": "/sass-project/static/js/Cart.ecc73e43.chunk.js.map",
     "About.7fb19f35.chunk.js.map": "/sass-project/static/js/About.7fb19f35.chunk.js.map",
@@ -35,7 +35,7 @@
     "Delivery.6e061c33.chunk.js.map": "/sass-project/static/js/Delivery.6e061c33.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.27d0e44d.css",
-    "static/js/main.668f8c40.js"
+    "static/css/main.a0dcb7c7.css",
+    "static/js/main.a8106c58.js"
   ]
 }
