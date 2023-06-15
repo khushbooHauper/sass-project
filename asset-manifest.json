@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/sass-project/static/css/main.27d0e44d.css",
+    "main.js": "/sass-project/static/js/main.e3ced31d.js",
+    "Home.js": "/sass-project/static/js/Home.31038af9.chunk.js",
+    "Cart.js": "/sass-project/static/js/Cart.ecc73e43.chunk.js",
+    "About.js": "/sass-project/static/js/About.7fb19f35.chunk.js",
+    "Catalog.js": "/sass-project/static/js/Catalog.a8eb224c.chunk.js",
+    "Favorites.js": "/sass-project/static/js/Favorites.02a49c5e.chunk.js",
+    "ProductCard.js": "/sass-project/static/js/ProductCard.a6e40255.chunk.js",
+    "Contacts.js": "/sass-project/static/js/Contacts.9b420896.chunk.js",
+    "Refund.js": "/sass-project/static/js/Refund.47dff2b6.chunk.js",
+    "Delivery.js": "/sass-project/static/js/Delivery.6e061c33.chunk.js",
+    "static/media/bg.png": "/sass-project/static/media/bg.65f8ccaa6e2ac67a0e45.png",
+    "static/media/loader.gif": "/sass-project/static/media/loader.3fb26d9b3c3c823ae786.gif",
+    "static/media/preloader.gif": "/sass-project/static/media/preloader.4b300476e7f148be6f73.gif",
+    "static/media/notFound.png": "/sass-project/static/media/notFound.4f507efac7d49670e596.png",
+    "static/media/empty-cart.png": "/sass-project/static/media/empty-cart.db905d1f4b063162f25b.png",
+    "static/media/slick.svg": "/sass-project/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/favorites.svg": "/sass-project/static/media/favorites.133d8f4a32eebd8aa1856dc7611d186b.svg",
+    "static/media/slick.eot": "/sass-project/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/sass-project/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/sass-project/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/sass-project/index.html",
+    "main.27d0e44d.css.map": "/sass-project/static/css/main.27d0e44d.css.map",
+    "main.e3ced31d.js.map": "/sass-project/static/js/main.e3ced31d.js.map",
+    "Home.31038af9.chunk.js.map": "/sass-project/static/js/Home.31038af9.chunk.js.map",
+    "Cart.ecc73e43.chunk.js.map": "/sass-project/static/js/Cart.ecc73e43.chunk.js.map",
+    "About.7fb19f35.chunk.js.map": "/sass-project/static/js/About.7fb19f35.chunk.js.map",
+    "Catalog.a8eb224c.chunk.js.map": "/sass-project/static/js/Catalog.a8eb224c.chunk.js.map",
+    "Favorites.02a49c5e.chunk.js.map": "/sass-project/static/js/Favorites.02a49c5e.chunk.js.map",
+    "ProductCard.a6e40255.chunk.js.map": "/sass-project/static/js/ProductCard.a6e40255.chunk.js.map",
+    "Contacts.9b420896.chunk.js.map": "/sass-project/static/js/Contacts.9b420896.chunk.js.map",
+    "Refund.47dff2b6.chunk.js.map": "/sass-project/static/js/Refund.47dff2b6.chunk.js.map",
+    "Delivery.6e061c33.chunk.js.map": "/sass-project/static/js/Delivery.6e061c33.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27d0e44d.css",
+    "static/js/main.e3ced31d.js"
+  ]
+}
