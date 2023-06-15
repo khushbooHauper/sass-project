@@ -17,11 +17,11 @@ const FlippedModal: React.FC = () => {
   //     setFlipped(!flipped)
   // }
   return (
-    <>
-      {!isSignUp ? (
+    <div>
+      {isSignUp === false && (
         <div className={`signup-container`}>
           <div className={`signup }`}>
-            <div  className={`left ${isSignUp ? "rotate" : ""}`}>
+            <div className={`left ${!isSignUp ? "rotate" : ""}`}>
               <h2>Welcome Back</h2>
               <div className="text-span">
                 {" "}
@@ -29,22 +29,6 @@ const FlippedModal: React.FC = () => {
               </div>
 
               <form className="input-flex">
-                <div>
-                  <div>
-                    {/* <label>
-                  <strong>Username</strong>
-                </label> */}
-                  </div>
-
-                  <div className="input-icons">
-                    <i className="fa fa-user icon"></i>
-                    <input
-                      className="input-field"
-                      type="text"
-                      placeholder="Username"
-                    />
-                  </div>
-                </div>
                 <div>
                   <div>
                     {/* <label>
@@ -61,25 +45,7 @@ const FlippedModal: React.FC = () => {
                     />
                   </div>
                 </div>
-                <div>
-                  <div>
-                    {/* <label>
-                  <strong>Password</strong>
-                </label> */}
-                  </div>
-                  <div className="input-icons">
-                    <input
-                      className="input-field password"
-                      type={showPass ? "text" : "password"}
-                      placeholder="Password"
-                    />
-                    {showPass ? (
-                      <i onClick={Toggle}></i>
-                    ) : (
-                      <i onClick={Toggle}></i>
-                    )}
-                  </div>
-                </div>
+
                 <div>
                   <div>
                     {/* <label>
@@ -90,7 +56,7 @@ const FlippedModal: React.FC = () => {
                     <input
                       className="input-field password"
                       type={showPass ? "text" : "password"}
-                      placeholder="Confirm Password"
+                      placeholder="Password"
                     />
                     {showPass ? (
                       <i onClick={Toggle} className="fa fa-eye-slash icon"></i>
@@ -138,10 +104,11 @@ const FlippedModal: React.FC = () => {
             </div>
           </div>
         </div>
-      ) : (
+      )}
+      {isSignUp === true && (
         <div className={`signup-container`}>
           <div className={`signup `}>
-            <div  className={`left ${isSignUp ? "rotate" : ""}`}>
+            <div className={`left ${isSignUp ? "rotate" : ""}`}>
               <h2 className="register-text">Register Now</h2>
 
               <form className="input-flex">
@@ -248,7 +215,7 @@ const FlippedModal: React.FC = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
