@@ -1,0 +1,47 @@
+.notFound {
+	margin: 0 auto;
+	text-transform: uppercase;
+	text-align: center;
+	p {
+		font-weight: 500;
+		font-size: 35px;
+		color: #252525;
+	}
+
+	img {
+		width: 40%;
+		height: 100%;
+		object-fit: cover;
+		margin-bottom: 20px;
+	}
+
+	margin-bottom: 75px;
+	margin-top: 40px;
+}
+
+@media (max-width: 1440px) {
+	.notFound {
+		p {
+			font-size: 30px;
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	.notFound {
+		p {
+			font-size: 25px;
+		}
+		margin-bottom: 50px;
+		margin-top: 0px;
+	}
+}
+
+@media (max-width: 425px) {
+	.notFound {
+		p {
+			font-size: 20px;
+		}
+		margin-bottom: 40px;
+	}
+}
