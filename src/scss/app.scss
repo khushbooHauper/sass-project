@@ -102,6 +102,7 @@ body {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
+  width: 300px;
 }
 .email-input {
   width: 310px;
@@ -222,29 +223,56 @@ body {
     top: 10%;
   }
 }
+.reverse-rotate {
+  animation: reverseAnimName 300ms linear;
+}
+
+@keyframes reverseAnimName {
+  0% {
+    transform: rotateY(-110deg);
+    left: 20%;
+    top: 10%;
+  }
+  50% {
+    transform: rotateY(-70deg);
+    left: 20%;
+    top: 10%;
+  }
+  80% {
+    transform: rotateY(-45deg);
+    left: 20%;
+    top: 10%;
+  }
+  100% {
+    transform: rotateY(0deg);
+    left: 20%;
+    top: 10%;
+  }
+}
 
 // media query starts here
 
-@media (max-width: 1024px){
+@media (max-width: 1024px) {
   .container {
     max-width: 1200px;
   }
 
   .signup {
-    flex-direction: row;
+    // flex-direction: column-reverse;
     width: 100%;
     margin: 20px auto;
     padding: 10px;
     height: auto;
     img {
       width: 100%;
+      // height: auto;
     }
-    .left {
+    // .left {
+    //   width: 100%;
+    // }
+    .right {
       width: 100%;
     }
-	.right{
-		display: none;
-	}
   }
 
   .input-field {
@@ -260,7 +288,6 @@ body {
       height: 10px;
     }
   }
-  
 }
 
 @media (max-width: 768px) {
@@ -270,10 +297,14 @@ body {
   }
 
   .signup {
+    flex-direction: column-reverse;
     width: 400px;
     height: auto;
     padding: 10px;
-   
+    img {
+      // width: 100%;
+      height: auto;
+    }
     .left {
       width: 100%;
     }
@@ -283,11 +314,9 @@ body {
     cursor: pointer;
     margin-top: 2px;
   }
-  
 }
 
-@media (min-width: 762px) and (max-width: 875px){
-
+@media (min-width: 762px) and (max-width: 875px) {
   .input-field {
     width: 300px;
   }
@@ -296,11 +325,16 @@ body {
   }
   .google-text-div {
     width: 300px;
-    
   }
 }
 
-
-
+@media (min-width: 1024px) {
+  .signin-btn {
+    width: 300px;
+  }
+  .google-text-div {
+    width: 300px;
+  }
+}
 
 // media query ends here

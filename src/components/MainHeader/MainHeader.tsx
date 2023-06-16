@@ -19,7 +19,7 @@ const MainHeader: React.FC = () => {
   const [isMobile, setIsMobile] = React.useState(false);
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
   const [openFlipModal, setOpenFlipModal] = React.useState(false);
-
+  
   React.useEffect(() => {
     const changeWidth = () => {
       setScreenWidth(window.innerWidth);
@@ -278,7 +278,7 @@ const MainHeader: React.FC = () => {
           </Link>
         </div>
       </div>
-      {openFlipModal && <FlippedModal />}
+      {openFlipModal && <FlippedModal/>}
     </header>
   );
 };
