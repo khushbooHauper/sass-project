@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const FlippedModal: React.FC = () => {
   const [showPass, setShowPass] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
+  const hasRendered = useRef(false);
 
   const Toggle = () => {
     setShowPass(!showPass);
@@ -12,8 +13,15 @@ const FlippedModal: React.FC = () => {
     setIsSignUp(!isSignUp);
   };
   const LoginForm = () => {
+    useEffect(() => {
+      // Update the rendered state after the component has rendered
+      hasRendered.current = true;
+    }, []);
+
+    // Check if the component has already rendered
+    const rotateClass = hasRendered.current ? "rotate" : "";
     return (
-      <div className={`left ${!isSignUp ? "rotate" : ""}`}>
+      <div className={`left ${rotateClass}`}>
         <h2>Welcome Back</h2>
         <div className="text-span">
           {" "}
@@ -80,7 +88,7 @@ const FlippedModal: React.FC = () => {
   };
   const SignUpForm = () => {
     return (
-      <div className={`left ${isSignUp ? "reverse-rotate" : ""}`}>
+      <div className={`left reverse-rotate`}>
         <h2 className="register-text">Register Now</h2>
 
         <form className="input-flex">
