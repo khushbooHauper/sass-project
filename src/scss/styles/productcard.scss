@@ -1,0 +1,43 @@
+.card {
+    width: 200px;
+    height: 330px;
+    margin-bottom: 20px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    .card-body {
+      height: 150px;
+  
+      .clipped-text {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .wish-btn-size-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      }
+      .wishlist-button {
+        background-color: white;
+        border: 1px solid rgba(181, 174, 174, 0.874);
+        padding: 8px 0px;
+        // margin-top: 10px;
+        // margin-left: 20px;
+        cursor: pointer;
+        width: 120px;
+        &:hover {
+          border: 1px solid rgba(138, 134, 134, 0.874);
+        }
+      }
+    }
+    img {
+      width: 190px;
+      height: 190px;
+    }
+  }
+  .card:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  

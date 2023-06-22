@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { RootState } from "../../redux/store";
 import FlippedModal from "../FlippedModal";
 import MyModal from "../MyModal";
+import MenuItem from "../New/MenuItem";
 
 const MainHeader: React.FC = () => {
   const { items } = useSelector((state: RootState) => state.cart);
@@ -80,7 +81,8 @@ const MainHeader: React.FC = () => {
             </li>
             <div className="hr"></div>
             <li className="menu__link">
-              <Link to="/about">CATEGORIES</Link>
+              {/* <Link to="/about">CATEGORIES</Link> */}
+              <MenuItem className="nav-link" title="CATEGORIES" />
             </li>
             <div className="hr"></div>
             <li className="menu__link">

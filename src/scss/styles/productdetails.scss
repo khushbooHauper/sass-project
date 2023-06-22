@@ -1,0 +1,89 @@
+.product{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 60px;
+    .product-pic{
+        img{
+            width: 500px;
+            height: 500px;
+        }
+       
+        width: 50%;
+    }
+    .details{
+        width: 50%;
+        .divider{
+            width: 400px;
+            color: grey;
+            height: .3px;
+        }
+        .btn-div{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .addToBag-btn{
+            width: 200px;
+            padding: 10px;
+            color: white;
+            background-color: rgb(228, 22, 118);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .addToBag-btn:hover{
+            background-color: rgb(249, 11, 122); 
+        }
+        .wishlist-btn{
+            width: 150px;
+            padding: 10px;
+            color: rgb(44, 41, 41);
+            background-color: transparent;
+            border: 1px solid rgb(193, 186, 186);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .wishlist-btn:hover{
+            border: 1px solid rgb(56, 54, 54);
+        }
+        .pink-text{
+            color: rgb(228, 22, 118);;
+        }
+    }
+   
+}
+
+@media (max-width: 767px) {
+    .product{
+        flex-direction: column;
+        padding: 10px;
+        
+        .product-pic {
+            
+            img{
+                width: 340px;
+                height: 300px; 
+            }
+           
+           
+        }
+    
+        .details {
+            width: 100%;
+            .divider{
+                width: 330px;
+                
+            }
+            .addToBag-btn{
+                width: 150px; 
+            }
+            .wishlist-btn{
+                width: 100px; 
+            }
+        }
+    }
+    
+  }

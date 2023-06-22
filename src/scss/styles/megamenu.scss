@@ -1,0 +1,54 @@
+.mega-menu {
+    display: flex;
+    justify-content: space-between;
+   position: absolute;
+   left: 7%;
+   right: 7%;
+   background-color: rgb(21, 18, 18);
+   top: 20px;
+   height: 460px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  
+   z-index: 3;
+   width: 800px;
+  }
+  
+  .mega-menu-column {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .mega-menu-heading {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .mega-menu-links {
+    list-style: none;
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .mega-menu-links li {
+    
+    margin-bottom: 5px;
+    li{
+        Link{
+            color:'inherit'
+        }
+    }
+    
+  }
+  
+  .mega-menu-links a {
+    // color: #333333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .mega-menu-links a:hover {
+    color: rgb(207, 66, 66);
+  }
+  

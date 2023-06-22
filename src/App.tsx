@@ -3,6 +3,13 @@ import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { Loader } from './components';
+import ProductDetails from './pages/ProductDetailsPage';
+import CategoryPage from './pages/CategoryPage';
+import Men from './pages/Men';
+import Women from './pages/Women';
+import Kids from './pages/Kids';
+import HomeFurnish from './pages/HomeFurnish';
+import Beauty from './pages/Beauty';
 
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ './pages/Home'));
 const Cart = lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));
@@ -29,9 +36,17 @@ const App: React.FC = () => {
             <Route path="/product/:id" element={<ProductCard />} />
             <Route path="/refund" element={<Refund />} />
             <Route path="/delivery" element={<Delivery />} />
+            <Route path='/productdetails/:id' element={<ProductDetails/>}/>
+           <Route path='/:category/:title' element={<CategoryPage/>}/>
+           <Route path='/men' element={<Men/>}/>
+           <Route path='/women' element={<Women/>}/>
+           <Route path='/kids' element={<Kids/>}/>
+           <Route path='/home&furnishing' element={<HomeFurnish/>}/>
+           <Route path='/beauty' element={<Beauty/>}/>
           </Routes>
         </Suspense>
       </div>
+      
     </div>
   );
 };
