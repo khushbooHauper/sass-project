@@ -76,15 +76,15 @@ const MainHeader: React.FC = () => {
             }
           >
             <li className="menu__link">
-              <Link to="/catalog">КАТАЛОГ</Link>
+              <Link to="/catalog">HOME</Link>
             </li>
             <div className="hr"></div>
             <li className="menu__link">
-              <Link to="/about">ПРО НАС</Link>
+              <Link to="/about">CATEGORIES</Link>
             </li>
             <div className="hr"></div>
             <li className="menu__link">
-              <Link to="/delivery">ДОСТАВКА</Link>
+              <Link to="/delivery">PRODUCT</Link>
             </li>
             <div className="hr"></div>
             <li className="menu__link menu__link_m">
