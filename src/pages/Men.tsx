@@ -1,4 +1,4 @@
-import { Footer, Header, NotFound, Pagination, Skeleton } from "../components";
+import { Footer, Header, MainHeader, NotFound, Pagination, Skeleton, Sort } from "../components";
 import { useAppDispatch } from "../redux/store";
 import {
   setCategoryId,
@@ -8,7 +8,9 @@ import {
 import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import '../scss/styles/men.scss'
+
+import { useNavigate, useParams } from "react-router-dom";
 const API_URL = process.env.PUBLIC_URL + '/api-response/myData.json';
 interface Product {
   id: number;
@@ -24,9 +26,11 @@ interface Product {
   };
 }
 const Men: React.FC = () => {
+  const navigate = useNavigate();
+  const {id} = useParams();
     const [value,setValue] = useState("");
   const dispatch = useAppDispatch();
-
+  
   const onChangeCurrentPage = (page: number) => {
     dispatch(setCurrentPage(page));
 
@@ -49,31 +53,40 @@ const Men: React.FC = () => {
   };
   const filteredData = data.filter((item) => item.category === "Men Clothing");
   console.log('filteredData',filteredData)
+  const openCard = ()=>{
+    navigate(`/productdetails/${id}`);
+    console.log(id,'fffffffffffffff')
+}
   return (
     <>
-      <Header />
+      <MainHeader />
       <section className="catalog">
         <div className="container">
+          <div className="search-section-title-container">
           <h3 className="catalog__title">Men Section</h3>
           <div className="catalog__filter-items">
             <div className="catalog__filter-item"></div>
             <div className="catalog__filter-item">
               <div className="catalog__search">
-                <input value={value} type="text" placeholder="Введіть ваш запит" onChange={(e)=>setValue(e.target.value)}/>
+                <input value={value} type="text" placeholder="Enter your request" onChange={(e)=>setValue(e.target.value)}/>
               </div>
+              
             </div>
           </div>
+          </div>
+         
           <div className="catalog__items">
-            <div className="catalog__item item">
+            <div className="catalog__item item" onClick={openCard}>
             {filteredData.map((f)=>(
               <div className="item__body" key={f.id}>
                
-                    <div >
+                    <div>
                 <div className="item__img">
                   <a href="#/product/2">
                     <img
                       src={f.image}
                       alt="men section"
+                      
                     />
                   </a>
                   <button aria-label="favoriteBtn" className="item__favorite">
@@ -121,7 +134,10 @@ const Men: React.FC = () => {
               ))}
             </div>
           </div>
+          <div className="pagination-style-right"> 
           <Pagination onClickPageChange={onChangeCurrentPage} />
+          </div>
+         
         </div>
       </section>
 

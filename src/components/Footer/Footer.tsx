@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
         <div className="footer__row">
           <div className="footer__column">
             <div className="footer__title" onClick={() => setFirstUl(!firstUl)}>
-              <div className="footer__label">КОМПАНІЯ</div>
+              <div className="footer__label">About us</div>
               <div className="footer__arrow">
                 <svg
                   className={firstUl ? 'active-svg' : 'default-svg'}
@@ -45,17 +45,17 @@ const Footer: React.FC = () => {
             <ul
               className={screenWidth > 992 || !firstUl ? 'footer__text open-text' : 'closed-text'}>
               <li>
-                <Link to="/about">Про нас</Link>
+                <Link to="/about">About us</Link>
               </li>
               <li>
-                <Link to="/contacts">Контакти</Link>
+                <Link to="/contacts">Contacts</Link>
               </li>
             </ul>
             <div className="footer__hr"></div>
           </div>
           <div className="footer__column">
             <div className="footer__title" onClick={() => setSecUl(!secUl)}>
-              <div className="footer__label">КОРИСНЕ</div>
+              <div className="footer__label">USEFUL</div>
               <div className="footer__arrow">
                 <svg
                   className={secUl ? 'active-svg' : 'default-svg'}
@@ -73,17 +73,17 @@ const Footer: React.FC = () => {
             </div>
             <ul className={screenWidth > 992 || !secUl ? 'footer__text open-text' : 'closed-text'}>
               <li>
-                <Link to="/delivery">Оплата та доставка</Link>
+                <Link to="/delivery">Payment and delivery</Link>
               </li>
               <li>
-                <Link to="/refund">Умови повернення</Link>
+                <Link to="/refund">Return conditions</Link>
               </li>
             </ul>
             <div className="footer__hr"></div>
           </div>
           <div className="footer__column">
             <div className="footer__title" onClick={() => setThirdUl(!thirdUl)}>
-              <div className="footer__label">ПОКУПЦЮ</div>
+              <div className="footer__label">BUYER</div>
               <div className="footer__arrow">
                 <svg
                   className={thirdUl ? 'active-svg' : 'default-svg'}
@@ -102,16 +102,16 @@ const Footer: React.FC = () => {
             <ul
               className={screenWidth > 992 || !thirdUl ? 'footer__text open-text' : 'closed-text'}>
               <li>
-                <Link to="/cart">Кошик</Link>
+                <Link to="/cart">Basket</Link>
               </li>
               <li>
-                <Link to="/favorites">Обране</Link>
+                <Link to="/favorites">Defence</Link>
               </li>
             </ul>
             <div className="footer__hr"></div>
           </div>
           <div className="footer__column">
-            <div className="footer__title">КОНТАКТИ</div>
+            <div className="footer__title">CONTACTS</div>
             <ul className="footer__text">
               <li>
                 <a target="_blank" aria-label="instagram" href="https://www.instagram.com">

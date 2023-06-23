@@ -19,6 +19,7 @@ const ProductCard = ({ product }: { product: Tproduct }) => {
 
     const openCard = ()=>{
         navigate(`/productdetails/${product.id}`);
+       
     }
   return (
     <div className='card' onClick={openCard} onMouseEnter={() => setShowWishlist(true)}

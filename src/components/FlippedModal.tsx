@@ -1,6 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { toast, ToastContainer } from "react-toastify";
 
+const API_URL = process.env.PUBLIC_URL + "/api-response/login.json";
+interface User {
+  email: string;
+  username: string;
+  password: string;
+}
 const FlippedModal: React.FC = () => {
   const [showPass, setShowPass] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
@@ -13,10 +22,83 @@ const FlippedModal: React.FC = () => {
     setIsSignUp(!isSignUp);
   };
   const LoginForm = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    // const [username, setUsername] = useState('');
+    const [error, setError] = useState("");
+    const { login } = useContext(AuthContext);
     useEffect(() => {
       // Update the rendered state after the component has rendered
       hasRendered.current = true;
     }, []);
+
+    // const handleSignIn: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
+    //   e.preventDefault();
+
+    //   const isFormValid = email && username && password; // Check if all fields are filled
+
+    //   if (isFormValid) {
+    //     try {
+    //       const response = await axios.get(API_URL);
+    //       const { username: dataUsername, email: dataEmail, password: dataPassword } = response.data.data;
+
+    //       if (email === dataEmail && username === dataUsername && password === dataPassword) {
+    //         login(email, username, password);
+    //         alert('Login successful!');
+    //       } else {
+    //         alert('Login failed. Invalid credentials.');
+    //       }
+    //     } catch (error) {
+    //       console.error('Login error:', error);
+    //     }
+    //   } else {
+    //     alert('Please fill all the required fields.');
+    //   }
+    // };
+
+    const handleSignIn: React.MouseEventHandler<HTMLButtonElement> = async (
+      e
+    ) => {
+      e.preventDefault();
+
+      const isFormValid = email && password; // Check if all fields are filled
+
+      if (isFormValid) {
+        try {
+          const payload = {
+            email: email,
+            // username: username,
+            password: password,
+          };
+
+          const response = await axios.get(API_URL);
+          // const { username: dataUsername, email: dataEmail, password: dataPassword } = response.data.data;
+          const isSuccess = response.data.status;
+
+          if (isSuccess) {
+            login(email, password);
+            toast.success("Login successful!"); // Use toastify to show success message
+          } else {
+            toast.error("Login failed. Invalid credentials."); // Use toastify to show error message
+          }
+        } catch (error) {
+          console.error("Login error:", error);
+          toast.error("An error occurred during login."); // Use toastify to show error message
+        }
+      } else {
+        toast.error("Please fill all the required fields."); // Use toastify to show error message
+      }
+    };
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setEmail(e.target.value);
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword(e.target.value);
+    };
+    // const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //   setUsername(e.target.value);
+    // };
 
     // Check if the component has already rendered
     const rotateClass = hasRendered.current ? "rotate" : "";
@@ -29,10 +111,27 @@ const FlippedModal: React.FC = () => {
         </div>
 
         <form className="input-flex">
+          {/* <div className="input-icons">
+              <i className="fa fa-user icon"></i>
+              <input
+                className="input-field"
+                type="text"
+                placeholder="Username"
+                autoComplete="username"
+                // onChange={handleUsernameChange}
+              />
+            </div> */}
           <div>
             <div className="input-icons">
               <i className="fa fa-at icon"></i>
-              <input className="input-field" type="email" placeholder="Email" />
+              <input
+                className="input-field"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleEmailChange}
+                autoComplete="email"
+              />
             </div>
           </div>
 
@@ -42,6 +141,9 @@ const FlippedModal: React.FC = () => {
                 className="input-field password"
                 type={showPass ? "text" : "password"}
                 placeholder="Password"
+                autoComplete="current-password"
+                value={password}
+                onChange={handlePasswordChange}
               />
               {showPass ? (
                 <i onClick={Toggle} className="fa fa-eye-slash icon"></i>
@@ -60,11 +162,12 @@ const FlippedModal: React.FC = () => {
             </div>
           </div>
           <div>
-            <button className="signin-btn">
+            <button className="signin-btn" type="submit" onClick={handleSignIn}>
               <Link to={`/`} className="signin-text">
                 <strong>Sign In</strong>
               </Link>
             </button>
+            {error && <div>{error}</div>}
           </div>
           <div className="google-text-div">
             <img
@@ -174,6 +277,7 @@ const FlippedModal: React.FC = () => {
         {isSignUp ? <SignUpForm /> : <LoginForm />}
         <RightImage />
       </div>
+      <ToastContainer />
     </div>
   );
 };

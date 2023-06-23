@@ -1,4 +1,4 @@
-import { Footer, Header, NotFound, Pagination, Skeleton } from "../components";
+import { Footer, Header, MainHeader, NotFound, Pagination, Skeleton } from "../components";
 import { useAppDispatch } from "../redux/store";
 import {
   setCategoryId,
@@ -9,6 +9,8 @@ import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import '../scss/styles/men.scss'
+
 const API_URL = process.env.PUBLIC_URL + '/api-response/myData.json';
 interface Product {
   id: number;
@@ -51,17 +53,20 @@ const HomeFurnish: React.FC = () => {
   console.log('filteredData',filteredData)
   return (
     <>
-      <Header />
+      <MainHeader />
       <section className="catalog">
         <div className="container">
+        <div className="search-section-title-container">
           <h3 className="catalog__title">Home & Furnishing Section</h3>
           <div className="catalog__filter-items">
             <div className="catalog__filter-item"></div>
             <div className="catalog__filter-item">
               <div className="catalog__search">
-                <input value={value} type="text" placeholder="Введіть ваш запит" onChange={(e)=>setValue(e.target.value)}/>
+                <input value={value} type="text" placeholder="Enter your request" onChange={(e)=>setValue(e.target.value)}/>
               </div>
+              
             </div>
+          </div>
           </div>
           <div className="catalog__items">
             <div className="catalog__item item">
@@ -121,7 +126,9 @@ const HomeFurnish: React.FC = () => {
               ))}
             </div>
           </div>
+          <div className="pagination-style-right"> 
           <Pagination onClickPageChange={onChangeCurrentPage} />
+          </div>
         </div>
       </section>
 

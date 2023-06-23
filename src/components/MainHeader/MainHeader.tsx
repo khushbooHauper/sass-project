@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -6,10 +6,33 @@ import { RootState } from "../../redux/store";
 import FlippedModal from "../FlippedModal";
 import MyModal from "../MyModal";
 import MenuItem from "../New/MenuItem";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+const API_URL = process.env.PUBLIC_URL + "/api-response/login.json";
 
 const MainHeader: React.FC = () => {
+  const { isLoggedIn, user, logout } = useContext(AuthContext);
   const { items } = useSelector((state: RootState) => state.cart);
   const { favorites } = useSelector((state: RootState) => state.favorite);
+  const [userName, setUserName] = useState<string>("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        const responseData = response.data.data;
+        if (isLoggedIn) {
+          setUserName(responseData.username);
+        }
+
+        console.log(responseData.username);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const totalCartAmount = items.reduce((sum, item) => item.count + sum, 0);
   const totalFavoritesAmount = favorites.reduce(
@@ -20,7 +43,7 @@ const MainHeader: React.FC = () => {
   const [isMobile, setIsMobile] = React.useState(false);
   const [screenWidth, setScreenWidth] = React.useState(window.innerWidth);
   const [openFlipModal, setOpenFlipModal] = React.useState(false);
-  
+
   React.useEffect(() => {
     const changeWidth = () => {
       setScreenWidth(window.innerWidth);
@@ -158,7 +181,7 @@ const MainHeader: React.FC = () => {
               </Link>
             </li>
             {isMobile && screenWidth < 992 ? (
-              <>
+              <div>
                 <div className="hr"></div>
                 <li className="menu__link">
                   <Link to="#" aria-label="login" onClick={handleModal}>
@@ -179,7 +202,25 @@ const MainHeader: React.FC = () => {
                     </svg>
                   </Link>
                 </li>
-              </>
+                <div>
+                  {isLoggedIn && (
+                    <div style={{ textAlign: "center" }}>
+                      <span style={{ color: "black", fontWeight: "500" }}>
+                        {userName}
+                      </span>
+                      <i
+                        className="fa  fa-sign-out"
+                        onClick={logout}
+                        style={{
+                          color: "black",
+                          marginLeft: "4px",
+                          cursor: "pointer",
+                        }}
+                      ></i>
+                    </div>
+                  )}
+                </div>
+              </div>
             ) : (
               ""
             )}
@@ -272,6 +313,24 @@ const MainHeader: React.FC = () => {
                 </svg>
               </Link>
             </li>
+            <div>
+              {isLoggedIn && (
+                <div>
+                  <span style={{ color: "#e2c8b2", fontWeight: "500" }}>
+                    {userName}
+                  </span>
+                  <i
+                    className="fa  fa-sign-out"
+                    onClick={logout}
+                    style={{
+                      color: "white",
+                      marginLeft: "4px",
+                      cursor: "pointer",
+                    }}
+                  ></i>
+                </div>
+              )}
+            </div>
           </ul>
         </nav>
         <div className="header__logo">
@@ -280,7 +339,7 @@ const MainHeader: React.FC = () => {
           </Link>
         </div>
       </div>
-      {openFlipModal && <FlippedModal/>}
+      {openFlipModal && <FlippedModal />}
     </header>
   );
 };
