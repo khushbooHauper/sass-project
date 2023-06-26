@@ -24,15 +24,13 @@ const MainHeader: React.FC = () => {
         if (isLoggedIn) {
           setUserName(responseData.username);
         }
-
-        console.log(responseData.username);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [isLoggedIn]);
 
   const totalCartAmount = items.reduce((sum, item) => item.count + sum, 0);
   const totalFavoritesAmount = favorites.reduce(

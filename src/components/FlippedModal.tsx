@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
@@ -13,25 +13,55 @@ interface User {
 const FlippedModal: React.FC = () => {
   const [showPass, setShowPass] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
+
   const hasRendered = useRef(false);
 
+  useEffect(() => {
+    if (hasRendered.current) {
+      hasRendered.current = false;
+    } else {
+      hasRendered.current = true;
+    }
+  }, [showPass]);
+
   const Toggle = () => {
-    setShowPass(!showPass);
+    setShowPass((prevShowPass) => !prevShowPass);
+    hasRendered.current = false;
   };
   const ToggleSignUp = () => {
     setIsSignUp(!isSignUp);
   };
+
   const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [username, setUsername] = useState('');
     const [error, setError] = useState("");
+    const emailInputRef = useRef<HTMLInputElement | null>(null);
+    const passwordInputRef = useRef<HTMLInputElement | null>(null);
     const { login } = useContext(AuthContext);
-    useEffect(() => {
-      // Update the rendered state after the component has rendered
-      hasRendered.current = true;
-    }, []);
 
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setEmail(e.target.value);
+    };
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword(e.target.value);
+    };
+    const handleEmailFocus = () => {
+      hasRendered.current = false;
+    };
+
+    const handlePasswordFocus = () => {
+      hasRendered.current = false;
+    };
+
+    const handleEmailBlur = () => {
+      hasRendered.current = true;
+    };
+
+    const handlePasswordBlur = () => {
+      hasRendered.current = true;
+    };
     // const handleSignIn: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     //   e.preventDefault();
 
@@ -89,16 +119,6 @@ const FlippedModal: React.FC = () => {
         toast.error("Please fill all the required fields."); // Use toastify to show error message
       }
     };
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setEmail(e.target.value);
-    };
-
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setPassword(e.target.value);
-    };
-    // const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //   setUsername(e.target.value);
-    // };
 
     // Check if the component has already rendered
     const rotateClass = hasRendered.current ? "rotate" : "";
@@ -111,16 +131,6 @@ const FlippedModal: React.FC = () => {
         </div>
 
         <form className="input-flex">
-          {/* <div className="input-icons">
-              <i className="fa fa-user icon"></i>
-              <input
-                className="input-field"
-                type="text"
-                placeholder="Username"
-                autoComplete="username"
-                // onChange={handleUsernameChange}
-              />
-            </div> */}
           <div>
             <div className="input-icons">
               <i className="fa fa-at icon"></i>
@@ -128,9 +138,12 @@ const FlippedModal: React.FC = () => {
                 className="input-field"
                 type="email"
                 placeholder="Email"
-                value={email}
+                value={email || ""}
                 onChange={handleEmailChange}
                 autoComplete="email"
+                onFocus={handleEmailFocus}
+                onBlur={handleEmailBlur}
+                ref={emailInputRef}
               />
             </div>
           </div>
@@ -141,15 +154,17 @@ const FlippedModal: React.FC = () => {
                 className="input-field password"
                 type={showPass ? "text" : "password"}
                 placeholder="Password"
-                autoComplete="current-password"
-                value={password}
+                autoComplete="Password"
+                value={password || ""}
                 onChange={handlePasswordChange}
+                onFocus={handlePasswordFocus}
+                onBlur={handlePasswordBlur}
+                ref={passwordInputRef}
               />
-              {showPass ? (
-                <i onClick={Toggle} className="fa fa-eye-slash icon"></i>
-              ) : (
-                <i onClick={Toggle} className="fa fa-eye icon"></i>
-              )}
+              <i
+                className={`fa ${showPass ? "fa-eye-slash" : "fa-eye"} icon`}
+                onClick={Toggle}
+              ></i>
             </div>
           </div>
           <div className="check-forgot">
@@ -190,8 +205,58 @@ const FlippedModal: React.FC = () => {
     );
   };
   const SignUpForm = () => {
+    const [email1, setEmail1] = useState("");
+    const [password1, setPassword1] = useState("");
+    const [confirmpassword1, setConfirmPassword1] = useState("");
+    const [username, setUsername] = useState("");
+    const emailInputRef1 = useRef(null);
+    const passwordInputRef1 = useRef(null);
+    const confirmpasswordInputRef = useRef(null);
+    const usernameInputRef = useRef(null);
+    const handleEmailChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setEmail1(e.target.value);
+    };
+
+    const handlePasswordChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword1(e.target.value);
+    };
+    const handleConfirmPasswordChange1 = (
+      e: React.ChangeEvent<HTMLInputElement>
+    ) => {
+      setConfirmPassword1(e.target.value);
+    };
+    const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setUsername(e.target.value);
+    };
+    const handleEmailFocus1 = () => {
+      hasRendered.current = false;
+    };
+
+    const handlePasswordFocus1 = () => {
+      hasRendered.current = false;
+    };
+    const handleConfirmPasswordFocus1 = () => {
+      hasRendered.current = false;
+    };
+    const handleUsernameFocus = () => {
+      hasRendered.current = false;
+    };
+    const handleEmailBlur1 = () => {
+      hasRendered.current = true;
+    };
+
+    const handlePasswordBlur1 = () => {
+      hasRendered.current = true;
+    };
+    const handleConfirmPasswordBlur1 = () => {
+      hasRendered.current = true;
+    };
+    const handleUsernameBlur = () => {
+      hasRendered.current = true;
+    };
+    const rotateClass = hasRendered.current ? "reverse-rotate" : "";
     return (
-      <div className={`left reverse-rotate`}>
+      <div className={`left ${rotateClass}`}>
         <h2 className="register-text">Register Now</h2>
 
         <form className="input-flex">
@@ -202,13 +267,29 @@ const FlippedModal: React.FC = () => {
                 className="input-field"
                 type="text"
                 placeholder="Username"
+                autoComplete="username"
+                value={username}
+                onChange={handleUsernameChange}
+                onFocus={handleUsernameFocus}
+                onBlur={handleUsernameBlur}
+                ref={usernameInputRef}
               />
             </div>
           </div>
           <div>
             <div className="input-icons">
               <i className="fa fa-at icon"></i>
-              <input className="input-field" type="email" placeholder="Email" />
+              <input
+                className="input-field"
+                type="email"
+                placeholder="Email"
+                value={email1}
+                onChange={handleEmailChange1}
+                autoComplete="email"
+                onFocus={handleEmailFocus1}
+                onBlur={handleEmailBlur1}
+                ref={emailInputRef1}
+              />
             </div>
           </div>
           <div>
@@ -217,8 +298,19 @@ const FlippedModal: React.FC = () => {
                 className="input-field password"
                 type={showPass ? "text" : "password"}
                 placeholder="Password"
+                autoComplete="Password"
+                value={password1}
+                onChange={handlePasswordChange1}
+                onFocus={handlePasswordFocus1}
+                onBlur={handlePasswordBlur1}
+                ref={passwordInputRef1}
               />
-              {showPass ? <i onClick={Toggle}></i> : <i onClick={Toggle}></i>}
+
+              {showPass ? (
+                <i onClick={Toggle} className="fa fa-eye-slash icon"></i>
+              ) : (
+                <i onClick={Toggle} className="fa fa-eye icon"></i>
+              )}
             </div>
           </div>
           <div>
@@ -227,12 +319,13 @@ const FlippedModal: React.FC = () => {
                 className="input-field password"
                 type={showPass ? "text" : "password"}
                 placeholder="Confirm Password"
+                autoComplete="Confirm Password"
+                value={confirmpassword1}
+                onChange={handleConfirmPasswordChange1}
+                onFocus={handleConfirmPasswordFocus1}
+                onBlur={handleConfirmPasswordBlur1}
+                ref={confirmpasswordInputRef}
               />
-              {showPass ? (
-                <i onClick={Toggle} className="fa fa-eye-slash icon"></i>
-              ) : (
-                <i onClick={Toggle} className="fa fa-eye icon"></i>
-              )}
             </div>
           </div>
           <div className="check-forgot">

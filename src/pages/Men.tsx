@@ -27,7 +27,6 @@ interface Product {
 }
 const Men: React.FC = () => {
   const navigate = useNavigate();
-  const {id} = useParams();
     const [value,setValue] = useState("");
   const dispatch = useAppDispatch();
   
@@ -52,11 +51,11 @@ const Men: React.FC = () => {
     }
   };
   const filteredData = data.filter((item) => item.category === "Men Clothing");
-  console.log('filteredData',filteredData)
-  const openCard = ()=>{
-    navigate(`/productdetails/${id}`);
-    console.log(id,'fffffffffffffff')
-}
+
+  const openCard = (productId: number) => {
+    navigate(`/productdetails/${productId}`);
+    console.log(productId);
+  };
   return (
     <>
       <MainHeader />
@@ -76,13 +75,13 @@ const Men: React.FC = () => {
           </div>
          
           <div className="catalog__items">
-            <div className="catalog__item item" onClick={openCard}>
+            <div className="catalog__item item" >
             {filteredData.map((f)=>(
-              <div className="item__body" key={f.id}>
+              <div className="item__body" key={f.id} onClick={()=>openCard(f.id)}>
                
                     <div>
                 <div className="item__img">
-                  <a href="#/product/2">
+                  <a>
                     <img
                       src={f.image}
                       alt="men section"

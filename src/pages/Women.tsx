@@ -8,7 +8,7 @@ import {
 import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import '../scss/styles/men.scss'
 
 const API_URL = process.env.PUBLIC_URL + '/api-response/myData.json';
@@ -26,8 +26,9 @@ interface Product {
   };
 }
 const Women: React.FC = () => {
-    const [value,setValue] = useState("");
+  const [value,setValue] = useState("");
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const onChangeCurrentPage = (page: number) => {
     dispatch(setCurrentPage(page));
@@ -50,7 +51,11 @@ const Women: React.FC = () => {
     }
   };
   const filteredData = data.filter((item) => item.category === "Clothing");
-  console.log('filteredData',filteredData)
+  
+  const openCard = (productId: number) => {
+    navigate(`/productdetails/${productId}`);
+    console.log(productId);
+  };
   return (
     <>
       <MainHeader />
@@ -71,11 +76,11 @@ const Women: React.FC = () => {
           <div className="catalog__items">
             <div className="catalog__item item">
             {filteredData.map((f)=>(
-              <div className="item__body" key={f.id}>
+              <div className="item__body" key={f.id} onClick={()=>openCard(f.id)}>
                
                     <div >
                 <div className="item__img">
-                  <a href="#/product/2">
+                  <a>
                     <img
                       src={f.image}
                       alt="men section"
