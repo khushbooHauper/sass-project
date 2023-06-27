@@ -5,12 +5,17 @@ interface User {
   email: string;
   password: string;
 }
-
+interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+}
 interface AuthContextProps {
   isLoggedIn: boolean;
   user: User | null;
   login: (email: string, password: string) => void;
   logout: () => void;
+  
 }
 
 export const AuthContext = createContext<AuthContextProps>({
@@ -18,6 +23,7 @@ export const AuthContext = createContext<AuthContextProps>({
   user: null,
   login: () => {},
   logout: () => {},
+  
 });
 
 interface AuthProviderProps {
@@ -31,6 +37,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(!!initialUser);
   const [user, setUser] = useState<User | null>(initialUser);
+  
+
+  
 
   const login = (email: string, password: string) => {
     setIsLoggedIn(true);

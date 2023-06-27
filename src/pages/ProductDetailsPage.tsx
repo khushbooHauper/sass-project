@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../scss/styles/productdetails.scss'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Footer, MainHeader } from '../components';
 const API_URL = process.env.PUBLIC_URL + '/api-response/myData.json';
 interface Product {
     id:number;
@@ -32,6 +33,8 @@ const ProductDetails = () => {
   };
   const selectedProduct = data.find(p => p.id.toString() === id);
   return (
+    <>
+    <MainHeader/>
     <div className='product'>
       <div className='product-pic'><img src={selectedProduct?.image} /></div>
       
@@ -71,6 +74,8 @@ const ProductDetails = () => {
        </div>
         </div>
     </div>
+    <Footer/>
+    </>
   )
 }
 

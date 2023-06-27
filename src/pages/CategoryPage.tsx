@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import CardRespo from "../components/CardRespo";
+import { Footer, MainHeader } from "../components";
 const categoryFilterResponsiveArray = [
   "Gender",
   "Categories",
@@ -175,6 +176,8 @@ const CategoryPage = () => {
     return selectedBrands.includes(product.brand);
   });
   return (
+    <>
+    <MainHeader/>
     <div className="Link-page-container">
       {!isMobile && (
         <div className="breadcrumbs">
@@ -514,6 +517,8 @@ const CategoryPage = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   );
 };
 

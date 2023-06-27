@@ -1,6 +1,6 @@
 .card {
     width: 200px;
-    height: 330px;
+    height: 370px;
     margin-bottom: 20px;
     padding: 8px;
     cursor: pointer;
@@ -8,7 +8,7 @@
     flex-direction: column;
     .card-body {
       height: 150px;
-  
+      
       .clipped-text {
         overflow: hidden;
         white-space: nowrap;
@@ -29,6 +29,20 @@
         width: 120px;
         &:hover {
           border: 1px solid rgba(138, 134, 134, 0.874);
+        }
+      }
+      .add-to-cart-button{
+        background-color: #e0bea2;
+        border: 1px solid rgba(181, 174, 174, 0.874);
+        border-radius: 14px;
+        padding: 5px 0px;
+        // margin-top: 10px;
+        // margin-left: 20px;
+        cursor: pointer;
+        width: 100px;
+        &:hover {
+          border: 1px solid rgba(138, 134, 134, 0.874);
+          background-color: #fad8bb;
         }
       }
     }

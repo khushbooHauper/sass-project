@@ -10,6 +10,7 @@ import Women from './pages/Women';
 import Kids from './pages/Kids';
 import HomeFurnish from './pages/HomeFurnish';
 import Beauty from './pages/Beauty';
+import CartNew from './pages/CartNew';
 
 const Home = lazy(() => import(/* webpackChunkName: "Home" */ './pages/Home'));
 const Cart = lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));
@@ -32,8 +33,9 @@ const App: React.FC = () => {
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/cartNew" element={<CartNew />} />
             <Route path="/contacts" element={<Contacts />} />
-            {/* <Route path="/product/:id" element={<ProductCard />} /> */}
+            <Route path="/product/:id" element={<ProductCard />} />
             <Route path="/refund" element={<Refund />} />
             <Route path="/delivery" element={<Delivery />} />
             <Route path='/productdetails/:id' element={<ProductDetails/>}/>

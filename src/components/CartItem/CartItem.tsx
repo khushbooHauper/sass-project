@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { minusItems, plusItems, removeItems } from '../../redux/cart/slice';
 
-type CartItemProps = {
+export type CartItemProps = {
   id: string;
   newId: number;
   title: string;
