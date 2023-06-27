@@ -74,6 +74,9 @@ const MainHeader: React.FC = () => {
   const handleModal = () => {
     setOpenFlipModal(true);
   };
+  const CloseModal = () => {
+    setOpenFlipModal(false);
+  };
 
   return (
     <header className={screenWidth > 992 || !isMobile ? "header" : "header_m"}>
@@ -337,7 +340,7 @@ const MainHeader: React.FC = () => {
           </Link>
         </div>
       </div>
-      {openFlipModal && <FlippedModal />}
+      {openFlipModal && <FlippedModal CloseModal={CloseModal}/>}
     </header>
   );
 };
