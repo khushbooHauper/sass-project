@@ -7,6 +7,7 @@ export type Tproduct = {
     id: number,
      title: string,
      price: number,
+     quantity:1,
       description: string,
        category: string,
        brand: string,
@@ -19,21 +20,12 @@ const ProductCard = ({ product }: { product: Tproduct }) => {
     const navigate = useNavigate();
     const {id} = useParams();
     const [showWishlist, setShowWishlist] = useState(false);
-    const cartContext = useContext(CartContext);
-    const { addToCart } = cartContext || {};
+    const {handleAddToCart} = useContext(CartContext);
+
   
-    const handleAddToCart = () => {
-      if (addToCart) {
-        const item: TCartItem = {
-          id: product.id,
-          title: product.title,
-          price:product.price,
-          brand:product.brand,
-          image:product.image
-          // Include other properties of the cart item
-        };
-        addToCart(item);
-        
+    const addToCart = (product: Tproduct | undefined) => {
+      if (product) {
+        handleAddToCart(product);
       }
     };
     const openCard = ()=>{
@@ -54,7 +46,7 @@ const ProductCard = ({ product }: { product: Tproduct }) => {
           </button>
           <span>Rating: {product.rating.rate}</span>
           <p>Rs. {product.price}</p>
-          <button className='add-to-cart-button'onClick={handleAddToCart}><Link to="/cartNew">add to cart</Link></button>
+          <button className='add-to-cart-button' onClick={() =>addToCart(product)}><Link to="#">add to cart</Link></button>
       </div>
           
           </>

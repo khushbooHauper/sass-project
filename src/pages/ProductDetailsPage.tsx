@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useContext} from 'react'
 import '../scss/styles/productdetails.scss'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Footer, MainHeader } from '../components';
+import { CartContext, TCartItem } from '../context/CartContext';
 const API_URL = process.env.PUBLIC_URL + '/api-response/myData.json';
 interface Product {
     id:number;
@@ -15,10 +16,13 @@ interface Product {
       };
     brand:string;
     price:number;
+    quantity:1
   }
 const ProductDetails = () => {
   const {id} = useParams();
   const [data, setData] = useState<Product[]>([]);
+  const {handleAddToCart} = useContext(CartContext);
+ 
   useEffect(() => {
     fetchData();
   }, []);
@@ -32,6 +36,13 @@ const ProductDetails = () => {
     }
   };
   const selectedProduct = data.find(p => p.id.toString() === id);
+  
+  const addToCart = (product: Product | undefined) => {
+    if (product) {
+      handleAddToCart(product);
+    }
+  };
+  
   return (
     <>
     <MainHeader/>
@@ -46,7 +57,7 @@ const ProductDetails = () => {
        <p>₹ {selectedProduct?.price} MRP</p>
        <span>inclusive of all taxes</span>
        <div className='btn-div'>
-        <button className='addToBag-btn'>ADD TO BAG</button>
+        <button className='addToBag-btn' onClick={() =>addToCart(selectedProduct)}>ADD TO BAG</button>
         <button className='wishlist-btn'>WISHLIST</button>
        </div>
        <div className='divider'><hr/></div>

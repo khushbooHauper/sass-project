@@ -9,6 +9,7 @@ import MenuItem from "../New/MenuItem";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import { CartContext } from "../../context/CartContext";
+import SideBar from "../SideBar";
 const API_URL = process.env.PUBLIC_URL + "/api-response/login.json";
 
 const MainHeader: React.FC = () => {
@@ -18,6 +19,14 @@ const MainHeader: React.FC = () => {
   const [userName, setUserName] = useState<string>("");
   const cartContext = useContext(CartContext);
   const { cartItems } = cartContext || { cartItems: [] };
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  const closeSideBar = () => setShowSidebar(false);
+  const openSideBar = () => setShowSidebar(true);
+
+
+
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -166,8 +175,8 @@ const MainHeader: React.FC = () => {
                 </p>
               </Link>
             </li> */}
-            <li className="menu__link menu__link_m">
-              <Link to="/cartNew">
+            <li className="menu__link menu__link_m" >
+              <Link to="#" onClick={openSideBar}>
                 <svg
                   width="25"
                   height="25"
@@ -190,7 +199,9 @@ const MainHeader: React.FC = () => {
                   {cartItems.length}
                 </p>
               </Link>
+             
             </li>
+            
             <div className="hr"></div>
             <li className="menu__link menu__link_m">
               <Link to="/contacts">
@@ -282,7 +293,7 @@ const MainHeader: React.FC = () => {
               </Link>
             </li>
             <li className="menu__link">
-              <Link to="/cartNew" aria-label="cart">
+              <Link to="#" aria-label="cart" onClick={openSideBar}>
                 <svg
                   width="25"
                   height="25"
@@ -368,6 +379,9 @@ const MainHeader: React.FC = () => {
         </div>
       </div>
       {openFlipModal && <FlippedModal CloseModal={CloseModal} />}
+      
+            {showSidebar && <SideBar open={openSideBar} close={closeSideBar}/>}
+            
     </header>
   );
 };
